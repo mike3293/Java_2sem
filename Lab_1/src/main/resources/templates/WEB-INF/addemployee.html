@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Person</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1>New employee:</h1>
+        <form th:action="@{/addemployee}"
+              th:object="${employeeform}" method="POST">
+            <p>Name:
+                <input type="text" th:field="*{name}"/>
+            </p>
+            <p> Specialization:
+                <input type="text" th:field="*{specialization}"/>
+            </p>
+            <input class="button-main-page" type="submit" value="Add"/>
+        </form>
+    </div>
+    <div>
+        <h1>Edit employee:</h1>
+        <form th:action="@{/editemployee}" th:object="${employeeform}" method="POST">
+            <p>Name:
+                <input type="text" th:field="*{name}"/>
+            </p>
+            <p>Specialization:
+                <input type="text" th:field="*{specialization}"/>
+            </p>
+            <input class="button-main-page" type="submit" value="Edit"/>
+        </form>
+    </div>
+    <div>
+        <h1>Delete employee:</h1>
+        <form th:action="@{/deleteemployee}" th:object="${employeeform}" method="POST">
+            <p>Name:
+                <input type="text" th:field="*{name}"/>
+            </p>
+            <input class="button-main-page" type="submit" value="Delete"/>
+        </form>
+    </div>
+</div>
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+     style="color:red;font-style:italic;">
+</div>
+</body>
